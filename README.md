@@ -85,13 +85,3 @@ CI is powered by **GitHub Actions**. On each push to the `main` branch:
 
 Configuration can be found in `.github/workflows/ci.yml`.
 
-## 📂 Useful Commands
-
-```bash
-npx playwright codegen http://localhost:8000  # Generate API test code interactively
-npx playwright test --project=chromium       # Run tests for Chromium only
-```
-
-## 📄 License
-
-This project is licensed under the MIT License.
