@@ -1,28 +1,97 @@
+
 # 📘 Bookstore API Automation with Playwright + TypeScript
 
-This project implements end-to-end API test automation for a FastAPI-based bookstore using Playwright and TypeScript.
+This repository contains an end-to-end API test automation framework built with **Playwright** and **TypeScript**, targeting a **FastAPI-based Bookstore API**.
+
+## 📦 Project Structure
+
+```
+bookstore-api-playwright/
+├── .env                     # Environment variables
+├── .gitignore
+├── package.json             # Project metadata and dependencies
+├── package-lock.json
+├── playwright.config.ts     # Playwright configuration file
+├── tsconfig.json            # TypeScript configuration file
+├── README.md
+├── tests/                   # Test files organized by features or endpoints
+├── utils/                   # Utility functions for request payloads, data, etc.
+└── .github/
+    └── workflows/ci.yml     # GitHub Actions CI configuration
+```
 
 ## 🚀 Getting Started
 
-### ▶️ Start the FastAPI Server
+### 📁 Prerequisites
+
+Ensure you have the following installed:
+
+- Node.js (v16+)
+- npm
+- Python 3.8+ (to run the FastAPI server)
+- FastAPI & Uvicorn
+
+### ▶️ Starting the FastAPI Server
+
 ```bash
 uvicorn main:app --reload
 ```
 
-### ▶️ Run the Tests
+Ensure the server is running on `http://127.0.0.1:8000` as the tests are configured for this endpoint.
+
+### ▶️ Install Dependencies
+
 ```bash
 npm install
+```
+
+### ▶️ Run Tests
+
+```bash
 npx playwright test
+```
+
+### ▶️ View Test Report
+
+```bash
 npx playwright show-report
 ```
 
-## ✅ Test Coverage
-- Create Book (valid and invalid inputs)
-- Get Book by ID and list
-- Update Book with valid and invalid payloads
-- Delete Book (valid and invalid ID)
-- Request chaining
-- Header, payload, and status validation
+## ✅ Features & Test Coverage
 
-## 🔁 CI/CD with GitHub Actions
-CI runs on every push to `main`. It installs dependencies, runs all tests, and uploads the report.
+The framework currently supports:
+
+- **Create Book** (with valid and invalid data)
+- **Get Book by ID** and **list all books**
+- **Update Book** (including error handling for invalid payloads)
+- **Delete Book** (handling valid and invalid IDs)
+- **Request chaining** to test sequence-dependent actions
+- **Assertions** on headers, payloads, and HTTP status codes
+
+## 🧪 Tech Stack
+
+- [Playwright](https://playwright.dev/) for API testing
+- [TypeScript](https://www.typescriptlang.org/) for type-safe code
+- [FastAPI](https://fastapi.tiangolo.com/) backend (test target)
+- [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
+
+## 🔁 Continuous Integration
+
+CI is powered by **GitHub Actions**. On each push to the `main` branch:
+
+1. Dependencies are installed
+2. Tests are executed
+3. Reports are uploaded
+
+Configuration can be found in `.github/workflows/ci.yml`.
+
+## 📂 Useful Commands
+
+```bash
+npx playwright codegen http://localhost:8000  # Generate API test code interactively
+npx playwright test --project=chromium       # Run tests for Chromium only
+```
+
+## 📄 License
+
+This project is licensed under the MIT License.
